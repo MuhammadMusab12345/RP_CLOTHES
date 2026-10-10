@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href=
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<meta name="description" content="RP Clothes — Premium engineered menswear for men and boys. Industrial elegance meets sartorial mastery." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg:#F2F2F2; --dark:#0A0A0B; --blue:#0047FF; --gray:#E5E7EB;
+  --font-h:'Inter',sans-serif; --font-m:'JetBrains Mono',monospace;
+}
+body { background:var(--bg); font-family:var(--font-h); color:var(--dark); overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; }
+.scrollbar-hide::-webkit-scrollbar { display:none; }
+.scrollbar-hide { -ms-overflow-style:none; scrollbar-width:none; }
+
+/* ===== NAVBAR ===== */
+.nav { position:fixed; top:0; left:0; right:0; z-index:50; transition:all .4s ease; }
+.nav.scrolled { background:rgba(242,242,242,.95); backdrop-filter:blur(12px); box-shadow:0 1px 8px rgba(0,0,0,.05); }
+.nav-inner { max-width:1800px; margin:0 auto; padding:0 16px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+@media(min-width:768px){ .nav-inner{ padding:0 32px; height:80px; } }
+.logo { display:flex; align-items:center; gap:4px; }
+.logo .dot { font-family:var(--font-m); font-size:12px; color:var(--blue); }
+.logo .rp { font-family:var(--font-h); font-weight:900; font-size:20px; color:#fff; transition:color .4s; }
+.logo .rp.scrolled { color:var(--dark); }
+.logo .sub { font-family:var(--font-m); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.6); transition:color .4s; }
+.logo .sub.scrolled { color:rgba(10,10,11,.6); }
+@media(min-width:768px){ .logo .rp{ font-size:24px; } }
+.nav-links { display:none; align-items:center; gap:40px; }
+@media(min-width:768px){ .nav-links{ display:flex; } }
+.nav-links a { font-family:var(--font-m); font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:#fff; transition:color .3s; cursor:pointer; }
+.nav-links a.scrolled { color:var(--dark); }
+.nav-links a:hover { color:var(--blue); }
+.nav-actions { display:flex; align-items:center; gap:16px; }
+.cart-btn { position:relative; background:none; border:none; cursor:pointer; color:#fff; transition:color .4s; }
+.cart-btn.scrolled { color:var(--dark); }
+.cart-btn:hover { color:var(--blue); }
+.cart-btn svg { width:20px; height:20px; }
+.cart-count { position:absolute; top:-8px; right:-8px; width:16px; height:16px; background:var(--blue); color:#fff; font-size:9px; font-family:var(--font-m); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.menu-btn { display:block; background:none; border:none; cursor:pointer; color:#fff; transition:color .4s; }
+.menu-btn.scrolled { color:var(--dark); }
+@media(min-width:768px){ .menu-btn{ display:none; } }
+.menu-btn svg { width:20px; height:20px; }
+.mobile-menu { display:none; background:var(--bg); overflow:hidden; }
+.mobile-menu.open { display:block; }
+.mobile-menu a { display:block; padding:16px 24px; font-family:var(--font-m); font-size:14px; letter-spacing:.15em; text-transform:uppercase; color:var(--dark); border-bottom:1px dashed rgba(10,10,11,.1); }
+.mobile-menu a:hover { color:var(--blue); }
+
+/* ===== HERO ===== */
+.hero { position:relative; height:100vh; overflow:hidden; background:var(--dark); }
+.hero-bg { position:absolute; inset:0; }
+.hero-bg img { width:100%; height:100%; object-fit:cover; opacity:.6; }
+.hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(10,10,11,.4), transparent, rgba(10,10,11,.8)); }
+.hero-content { position:relative; z-index:10; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0 16px; text-align:center; }
+.hero-label { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+.hero-label .line { width:48px; height:1px; background:var(--blue); }
+@media(min-width:768px){ .hero-label .line{ width:96px; } }
+.hero-label span { font-family:var(--font-m); font-size:10px; letter-spacing:.4em; color:var(--blue); text-transform:uppercase; }
+@media(min-width:768px){ .hero-label span{ font-size:12px; } }
+.hero h1 { font-family:var(--font-h); font-weight:900; color:#fff; line-height:.85; font-size:clamp(3rem,14vw,14rem); }
+.hero h1.sub { color:rgba(255,255,255,.2); font-size:clamp(2rem,8vw,8rem); }
+.hero p { margin-top:32px; font-family:var(--font-m); font-size:12px; letter-spacing:.2em; color:rgba(255,255,255,.5); text-transform:uppercase; max-width:400px; }
+@media(min-width:768px){ .hero p{ font-size:14px; margin-top:32px; } }
+.hero-cta { margin-top:32px; display:inline-flex; align-items:center; gap:12px; background:var(--blue); color:#fff; padding:12px 32px; font-family:var(--font-m); font-size:12px; letter-spacing:.2em; text-transform:uppercase; transition:background .3s; }
+@media(min-width:768px){ .hero-cta{ margin-top:48px; } }
+.hero-cta:hover { background:#0035CC; }
+.scroll-ind { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:10; animation:bounce 2s infinite; }
+.scroll-ind svg { width:20px; height:20px; color:rgba(255,255,255,.4); }
+@keyframes bounce { 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,8px); } }
+
+/* ===== COLLECTION ===== */
+.collection { background:var(--bg); padding:64px 16px; }
+@media(min-width:768px){ .collection{ padding:96px 32px; } }
+.collection-inner { max-width:1800px; margin:0 auto; }
+.col-head { text-align:center; margin-bottom:40px; }
+@media(min-width:768px){ .col-head{ margin-bottom:64px; } }
+.col-head .tag { font-family:var(--font-m); font-size:10px; letter-spacing:.4em; color:var(--blue); text-transform:uppercase; }
+.col-head h2 { font-family:var(--font-h); font-weight:900; color:var(--dark); margin-top:12px; font-size:clamp(2rem,5vw,5rem); line-height:1; }
+.col-head .div { width:64px; height:1px; background:var(--blue); margin:16px auto 0; }
+.cat-filter { display:flex; justify-content:center; gap:4px; margin-bottom:24px; }
+.cat-filter button { font-family:var(--font-m); font-size:12px; letter-spacing:.15em; text-transform:uppercase; padding:10px 20px; border:none; background:transparent; color:rgba(10,10,11,.6); cursor:pointer; transition:all .3s; }
+.cat-filter button.active { background:var(--dark); color:#fff; }
+.cat-filter button:hover { color:var(--dark); }
+.type-filter { display:flex; gap:8px; overflow-x:auto; padding-bottom:16px; margin-bottom:32px; }
+@media(min-width:768px){ .type-filter{ justify-content:center; } }
+.type-filter button { font-family:var(--font-m); font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px; white-space:nowrap; border:1px solid var(--gray); color:rgba(10,10,11,.4); background:transparent; cursor:pointer; transition:all .3s; }
+.type-filter button.active { border-color:var(--blue); color:var(--blue); background:rgba(0,71,255,.05); }
+.type-filter button:hover { border-color:rgba(10,10,11,.3); }
+.stitch { border-top:1px dashed rgba(10,10,11,.15); margin-bottom:32px; }
+.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+@media(min-width:768px){ .grid{ grid-template-columns:repeat(3,1fr); gap:12px; } }
+@media(min-width:1024px){ .grid{ grid-template-columns:repeat(4,1fr); } }
+@media(min-width:1280px){ .grid{ grid-template-columns:repeat(5,1fr); } }
+.card { display:block; }
+.card-img { position:relative; overflow:hidden; background:var(--gray); }
+.card-img img { width:100%; aspect-ratio:3/4; object-fit:cover; transition:transform .7s; }
+.card:hover .card-img img { transform:scale(1.05); }
+.card-overlay { position:absolute; inset:0; background:rgba(10,10,11,0); transition:backgroun .5s; }
+.card:hover .card-overlay { background:rgba(10,10,11,.2); }
+.card-cta { position:absolute; bottom:0; left:0; right:0; padding:12px; transform:translateY(100%); transition:transform .5s; }
+.card:hover .card-cta { transform:translateY(0); }
+.card-cta-inner { background:var(--blue); color:#fff; text-align:center; padding:8px; font-family:var(--font-m); font-size:10px; letter-spacing:.15em; text-transform:uppercase; }
+@media(min-width:768px){ .card-cta-inner{ font-size:12px; padding:10px; } }
+.card-badge { position:absolute; top:12px; left:12px; font-family:var(--font-m); font-size:9px; letter-spacing:.15em; text-transform:uppercase; background:rgba(242,242,242,.9); padding:4px 8px; color:var(--dark); }
+.card-info { margin-top:12px; padding:0 4px; }
+.card-info h3 { font-family:var(--font-h); font-size:14px; font-weight:600; color:var(--dark); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+@media(min-width:768px){ .card-info h3{ font-size:16px; } }
+.card-info .row { display:flex; align-items:center; justify-content:space-between; margin-top:4px; }
+.card-info .type { font-family:var(--font-m); font-size:12px; color:rgba(10,10,11,.7); }
+.card-info .price { font-family:var(--font-m); font-size:14px; font-weight:700; color:var(--dark); }
+@media(min-width:768px){ .card-info .price{ font-size:16px; } }
+.empty { text-align:center; padding:80px 0; font-family:var(--font-m); font-size:14px; color:rgba(10,10,11,.4); letter-spacing:.1em; }
+
+/* ===== ABOUT ===== */
+.about { background:var(--dark); padding:80px 16px; }
+@media(min-width:768px){ .about{ padding:128px 32px; } }
+.about-inner { max-width:1400px; margin:0 auto; display:grid; gap:48px; }
+@media(min-width:768px){ .about-inner{ grid-template-columns:1fr 1fr; gap:80px; align-items:center; } }
+.about .tag { font-family:var(--font-m); font-size:10px; letter-spacing:.4em; color:var(--blue); text-transform:uppercase; }
+.about h2 { font-family:var(--font-h); font-weight:900; color:#fff; margin-top:16px; line-height:1.1; font-size:clamp(2rem,4vw,4rem); }
+.about .div { width:64px; height:1px; background:var(--blue); margin:24px 0; }
+.about p { font-size:16px; color:rgba(255,255,255,.5); line-height:1.7; max-width:500px; }
+.about p + p { margin-top:16px; }
+.stats { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:40px; }
+.stats .num { font-family:var(--font-h); font-weight:900; font-size:24px; color:var(--blue); }
+@media(min-width:768px){ .stats .num{ font-size:30px; } }
+.stats .lbl { font-family:var(--font-m); font-size:10px; letter-spacing:.15em; color:rgba(255,255,255,.3); text-transform:uppercase; margin-top:4px; }
+.about-img { position:relative; }
+.about-img img { width:100%; aspect-ratio:1/1; object-fit:cover; }
+.about-img .border { position:absolute; inset:0; border:1px solid rgba(0,71,255,.2); }
+.about-img .shadow { position:absolute; bottom:-16px; right:-16px; width:100%; height:100%; border:1px dashed rgba(0,71,255,.1); z-index:-1; }
+
+/* ===== FOOTER ===== */
+.footer { background:var(--dark); border-top:1px dashed rgba(255,255,255,.1); }
+.footer-inner { max-width:1800px; margin:0 auto; padding:48px 16px; }
+@media(min-width:768px){ .footer-inner{ padding:64px 32px; } }
+.footer-grid { display:grid; grid-template-columns:1fr; gap:40px; }
+@media(min-width:768px){ .footer-grid{ grid-template-columns:1fr 1fr 1fr 1fr; } }
+.footer-brand .logo { margin-bottom:16px; }
+.footer-brand p { font-size:14px; color:rgba(255,255,255,.3); line-height:1.7; max-width:240px; }
+.footer-col h4 { font-family:var(--font-m); font-size:10px; letter-spacing:.3em; color:var(--blue); text-transform:uppercase; margin-bottom:16px; }
+.footer-col a { display:block; font-size:14px; color:rgba(255,255,255,.4); margin-bottom:8px; transition:color .3s; }
+.footer-col a:hover { color:#fff; }
+.footer-bottom { border-top:1px dashed rgba(255,255,255,.1); margin-top:48px; padding-top:32px; display:flex; flex-direction:column; align-items:center; gap:16px; }
+@media(min-width:768px){ .footer-bottom{ flex-direction:row; justify-content:space-between; } }
+.footer-bottom p, .footer-bottom a { font-family:var(--font-m); font-size:10px; letter-spacing:.15em; color:rgba(255,255,255,.2); text-transform:uppercase; }
+.footer-bottom .links { display:flex; gap:24px; }
+.footer-bottom a:hover { color:rgba(255,255,255,.5); }
+
+/* ===== CART PANEL ===== */
+.cart-overlay { position:fixed; inset:0; background:rgba(10,10,11,.5); z-index:60; opacity:0; pointer-events:none; transition:opacity .3s; }
+.cart-overlay.open { opacity:1; pointer-events:auto; }
+.cart-panel { position:fixed; top:0; right:0; bottom:0; width:100%; max-width:420px; z-index:70; background:rgba(242,242,242,.95); backdrop-filter:blur(16px); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .4s cubic-bezier(.22,1,.36,1); }
+.cart-panel.open { transform:translateX(0); }
+.cart-head { display:flex; align-items:center; justify-content:space-between; padding:20px; border-bottom:1px dashed rgba(10,10,11,.15); }
+.cart-head .left { display:flex; align-items:center; gap:12px; }
+.cart-head svg { width:20px; height:20px; color:var(--dark); }
+.cart-head .title { font-family:var(--font-h); font-weight:700; font-size:18px; }
+.cart-head .cnt { font-family:var(--font-m); font-size:10px; letter-spacing:.1em; color:rgba(10,10,11,.5); }
+.cart-head .close { background:none; border:none; cursor:pointer; color:var(--dark); }
+.cart-head .close:hover { color:var(--blue); }
+.cart-items { flex:1; overflow-y:auto; padding:20px; }
+.cart-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
+.cart-empty svg { width:48px; height:48px; color:rgba(10,10,11,.15); margin-bottom:16px; }
+.cart-empty p { font-family:var(--font-m); font-size:14px; color:rgba(10,10,11,.4); letter-spacing:.1em; }
+.cart-item { display:flex; gap:16px; background:#fff; padding:12px; margin-bottom:16px; }
+.cart-item img { width:80px; height:96px; object-fit:cover; }
+.cart-item .info { flex:1; min-width:0; }
+.cart-item h4 { font-family:var(--font-h); font-size:14px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cart-item .size { font-family:var(--font-m); font-size:10px; color:rgba(10,10,11,.5); margin-top:2px; }
+.cart-item .iprice { font-family:var(--font-m); font-size:14px; font-weight:700; margin-top:4px; }
+.cart-item .qty { display:flex; align-items:center; gap:12px; margin-top:8px; }
+.cart-item .qty button { width:24px; height:24px; border:1px solid var(--gray); background:none; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.cart-item .qty button:hover { border-color:var(--blue); }
+.cart-item .qty button svg { width:12px; height:12px; }
+.cart-item .qty span { font-family:var(--font-m); font-size:12px; }
+.cart-item .remove { margin-left:auto; background:none; border:none; cursor:pointer; color:rgba(10,10,11,.3); }
+.cart-item .remove:hover { color:#ef4444; }
+.cart-item .remove svg { width:16px; height:16px; }
+.cart-foot { padding:20px; border-top:1px dashed rgba(10,10,11,.15); }
+.cart-foot .total { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.cart-foot .total .lbl { font-family:var(--font-m); font-size:12px; letter-spacing:.1em; color:rgba(10,10,11,.6); text-transform:uppercase; }
+.cart-foot .total .val { font-family:var(--font-h); font-size:20px; font-weight:900; }
+.cart-foot .checkout { width:100%; background:var(--blue); color:#fff; padding:14px; border:none; font-family:var(--font-m); font-size:12px; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; transition:background .3s; }
+.cart-foot .checkout:hover { background:#0035CC; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="dot">●</span>
+      <span class="rp" id="logoRp">RP</span>
+      <span class="sub" id="logoSub">CLOTHES</span>
+    </a>
+    <div class="nav-links">
+      <a id="navCollection" class="navLink">Collection</a>
+      <a id="navMen" class="navLink">Men</a>
+      <a id="navBoys" class="navLink">Boys</a>
+      <a id="navAbout" class="navLink">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartBtn" onclick="openCart()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none">0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a onclick="navClick('all')">Collection</a>
+    <a onclick="navClick('men')">Men</a>
+    <a onclick="navClick('boys')">Boys</a>
+    <a onclick="scrollToAbout()">About</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/962d44041_generated_9b1b699a.png" alt="RP Clothes hero" />
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">
+      <div class="line"></div>
+      <span>Est. 2024</span>
+      <div class="line"></div>
+    </div>
+    <h1>RP</h1>
+    <h1 class="sub">CLOTHES</h1>
+    <p>Engineered for the modern man &amp; the next generation</p>
+    <a class="hero-cta" onclick="scrollToCollection()">Explore Collection</a>
+  </div>
+  <div class="scroll-ind">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+  </div>
+</section>
+
+<!-- ===== COLLECTION ===== -->
+<section class="collection" id="collection">
+  <div class="collection-inner">
+    <div class="col-head">
+      <span class="tag">The Collection</span>
+      <h2 id="pieceCount">53 Pieces</h2>
+      <div class="div"></div>
+    </div>
+    <div class="cat-filter">
+      <button class="active" data-cat="all" onclick="setCat('all')">All</button>
+      <button data-cat="men" onclick="setCat('men')">Men</button>
+      <button data-cat="boys" onclick="setCat('boys')">Boys</button>
+    </div>
+    <div class="type-filter scrollbar-hide" id="typeFilter"></div>
+    <div class="stitch"></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" style="display:none">No items found</div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <span class="tag">The Brand</span>
+      <h2>Crafted for<br />Those Who<br />Command</h2>
+      <div class="div"></div>
+      <p>RP Clothes is born from the intersection of industrial precision and sartorial mastery. Every stitch, every seam, every fabric choice is a deliberate act of engineering — designed for men and boys who understand that clothing is armor.</p>
+      <p>From the brutalist concrete of our design studios to the hands of master tailors, each piece in our collection carries the DNA of uncompromising quality and masculine elegance.</p>
+      <div class="stats">
+        <div><p class="num">50+</p><p class="lbl">Styles</p></div>
+        <div><p class="num">100%</p><p class="lbl">Premium</p></div>
+        <div><p class="num">2024</p><p class="lbl">Founded</p></div>
+      </div>
+    </div>
+    <div class="about-img">
+      <img src="https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/72b538ec0_generated_422c26c6.png" alt="RP Clothes fabric detail" />
+      <div class="border"></div>
+      <div class="shadow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="dot" style="color:var(--blue)">●</span>
+          <span class="rp" style="color:#fff">RP</span>
+          <span class="sub" style="color:rgba(255,255,255,.4)">CLOTHES</span>
+        </div>
+        <p>Engineered menswear for those who understand that style is a statement of intent.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a onclick="navClick('men')">Men Collection</a>
+        <a onclick="navClick('boys')">Boys Collection</a>
+        <a onclick="navClick('all')">New Arrivals</a>
+        <a onclick="navClick('all')">Best Sellers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a onclick="scrollToAbout()">About RP</a>
+        <a onclick="scrollToAbout()">Our Story</a>
+        <a onclick="scrollToAbout()">Careers</a>
+        <a onclick="scrollToAbout()">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="tel:+919876543210">+91 98765 43210</a>
+        <a href="mailto:info@rpclothes.com">info@rpclothes.com</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 RP Clothes. All rights reserved.</p>
+      <div class="links">
+        <a href="https://example.com/privacy" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://example.com/terms" target="_blank" rel="noopener">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== CART PANEL ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <div class="left">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <span class="title">Cart</span>
+      <span class="cnt" id="cartCnt">(0)</span>
+    </div>
+    <button class="close" onclick="closeCart()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="total">
+      <span class="lbl">Total</span>
+      <span class="val" id="cartTotal">₹0</span>
+    </div>
+    <button class="checkout" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<script>
+const products = [
+  {id:1,name:"Charcoal Formal Blazer",price:4999,category:"men",type:"Blazers",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/87eb2970a_generated_a8d1c9bc.png"},
+  {id:2,name:"Classic Black Polo",price:1299,category:"men",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/0974f8a89_generated_8fe05ec3.png"},
+  {id:3,name:"Navy Blue Denim Jeans",price:2499,category:"men",type:"Jeans",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/e7b0beccb_generated_7a2b4b74.png"},
+  {id:4,name:"White Formal Shirt",price:1799,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/7fdd900ce_generated_d121b0a7.png"},
+  {id:5,name:"Olive Bomber Jacket",price:3499,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/ff3029b82_generated_55dfb17c.png"},
+  {id:6,name:"Black Leather Jacket",price:7999,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/c09bd2a20_generated_01193bab.png"},
+  {id:7,name:"Burgundy Kurta Set",price:2999,category:"men",type:"Ethnic",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/b2a553324_generated_818d5d62.png"},
+  {id:8,name:"Steel Grey Hoodie",price:1999,category:"boys",type:"Hoodies",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/b0920c392_generated_45a55e7e.png"},
+  {id:9,name:"Charcoal Three-Piece Suit",price:8999,category:"men",type:"Suits",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/3c2d726a5_generated_fdc77d52.png"},
+  {id:10,name:"Sky Blue Linen Shirt",price:1599,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/490272c3b_generated_4428fda5.png"},
+  {id:11,name:"Black Tracksuit Set",price:2799,category:"men",type:"Sportswear",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/590378e8b_generated_b03cfd71.png"},
+  {id:12,name:"Sand Cargo Pants",price:2199,category:"men",type:"Pants",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/2c408710b_generated_21019b76.png"},
+  {id:13,name:"Navy Sherwani",price:12999,category:"men",type:"Ethnic",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/eb98a7f36_generated_2dbc25b5.png"},
+  {id:14,name:"Red Striped Polo",price:899,category:"boys",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/a44b3f7f1_generated_0a2540b3.png"},
+  {id:15,name:"Grey Wool Overcoat",price:6499,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/37841321e_generated_22a4a279.png"},
+  {id:16,name:"Black Henley Tee",price:999,category:"men",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/d6501d85b_generated_0848bcdb.png"},
+  {id:17,name:"Light Blue Denim Jacket",price:3299,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/48791b922_generated_d81344e1.png"},
+  {id:18,name:"Camo Print Tee",price:799,category:"boys",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/d2177429b_generated_3d9f4ce0.png"},
+  {id:19,name:"Red Plaid Flannel",price:1899,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/5a125d02f_generated_4fa7f96e.png"},
+  {id:20,name:"Black Formal Trousers",price:2299,category:"men",type:"Pants",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/f2881a330_generated_0c47e37b.png"},
+  {id:21,name:"Maroon V-Neck Sweater",price:2499,category:"men",type:"Sweaters",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/6cf655ea2_generated_4ac3b259.png"},
+  {id:22,name:"Charcoal Nehru Jacket",price:3999,category:"men",type:"Ethnic",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/bbeebb543_generated_0215c666.png"},
+  {id:23,name:"Denim Dungaree Set",price:1499,category:"boys",type:"Sets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/3e957efb3_generated_89e6b7fc.png"},
+  {id:24,name:"White Linen Suit",price:7499,category:"men",type:"Suits",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/6d840f9ec_generated_3e2f8638.png"},
+  {id:25,name:"Black Turtleneck",price:1799,category:"men",type:"Sweaters",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/67f52f02c_generated_44bd6290.png"},
+  {id:26,name:"Rust Printed Shirt",price:1699,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/fdeb11266_generated_5f8fe67c.png"},
+  {id:27,name:"Navy Varsity Jacket",price:1899,category:"boys",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/b3ff6028a_generated_4606fa47.png"},
+  {id:28,name:"Olive Green Chinos",price:1999,category:"men",type:"Pants",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/ac8041738_generated_ec1524ca.png"},
+  {id:29,name:"Navy Windbreaker",price:2799,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/669a85f05_generated_c88fcf95.png"},
+  {id:30,name:"Black Ripped Jeans",price:2699,category:"men",type:"Jeans",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/d1fbf4fd2_generated_6654ec02.png"},
+  {id:31,name:"Mandarin Collar Shirt",price:1599,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/33bcc3559_generated_2071f8b1.png"},
+  {id:32,name:"Camel Suede Jacket",price:5999,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/b7b244f1f_generated_ce20154e.png"},
+  {id:33,name:"Yellow Rain Jacket",price:1299,category:"boys",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/892678c3b_generated_6faf5752.png"},
+  {id:34,name:"Charcoal Waistcoat",price:2999,category:"men",type:"Blazers",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/fbd01c117_generated_6a74cae6.png"},
+  {id:35,name:"Emerald Velvet Blazer",price:5499,category:"men",type:"Blazers",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/53ee95c67_generated_90a39645.png"},
+  {id:36,name:"White Kurta Pajama",price:2499,category:"men",type:"Ethnic",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/efe0cd5f5_generated_89b9fdca.png"},
+  {id:37,name:"Navy School Blazer",price:1699,category:"boys",type:"Blazers",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/0f57a459c_generated_972cfad0.png"},
+  {id:38,name:"Black Athleisure Set",price:2499,category:"men",type:"Sportswear",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/cccc6099d_generated_75a6fd60.png"},
+  {id:39,name:"Terracotta Linen Blazer",price:4499,category:"men",type:"Blazers",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/f2dac2b32_generated_1582539d.png"},
+  {id:40,name:"Indigo Raw Denim",price:3299,category:"men",type:"Jeans",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/49f983159_generated_83f050a5.png"},
+  {id:41,name:"Grey Puffer Vest",price:2999,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/6a321c2e1_generated_ce146af8.png"},
+  {id:42,name:"Tie-Dye Summer Tee",price:699,category:"boys",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/a3cb9ebc5_generated_89215cda.png"},
+  {id:43,name:"Pinstripe Double-Breasted",price:9499,category:"men",type:"Suits",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/92550f829_generated_05666d6f.png"},
+  {id:44,name:"Sage Green Polo",price:1199,category:"men",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/2646fcd38_generated_28b11b06.png"},
+  {id:45,name:"Royal Blue Pathani",price:3499,category:"men",type:"Ethnic",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/a45928f0f_generated_fef5970f.png"},
+  {id:46,name:"Smart Casual Blazer Set",price:1999,category:"boys",type:"Sets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/ef4a1ac13_generated_52f9e4e9.png"},
+  {id:47,name:"Pink Oxford Shirt",price:1699,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/6f1b35670_generated_80908047.png"},
+  {id:48,name:"Brown Biker Jacket",price:6999,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/fca8b3ca9_generated_1b042d89.png"},
+  {id:49,name:"Midnight Formal Shirt",price:1899,category:"men",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/131d673ed_generated_30afc420.png"},
+  {id:50,name:"Stone Grey Summer Henley",price:1099,category:"men",type:"T-Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/af6d408a3_generated_ae6d3832.png"},
+  {id:51,name:"Geometric Print Shirt",price:999,category:"boys",type:"Shirts",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/6a440bdf4_generated_41fd3151.png"},
+  {id:52,name:"Charcoal Peacoat",price:5999,category:"men",type:"Jackets",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/933a02e0d_generated_b12325dc.png"},
+  {id:53,name:"Black Linen Pants",price:1899,category:"men",type:"Pants",image:"https://media.base44.com/images/public/6a40418f76dabd8e28a600f7/9ff75593f_generated_4be68b5e.png"}
+];
+const TYPES = ['All','Shirts','T-Shirts','Jeans','Jackets','Blazers','Suits','Pants','Ethnic','Sweaters','Sportswear','Hoodies','Sets'];
+let cat = 'all', typeF = 'All';
+let cart = [];
+
+function getFiltered(){ return products.filter(p => (cat==='all'||p.category===cat) && (typeF==='All'||p.type===typeF)); }
+function fmt(n){ return n.toLocaleString('en-IN'); }
+
+function renderGrid(){
+  const f = getFiltered();
+  const g = document.getElementById('grid');
+  document.getElementById('empty').style.display = f.length ? 'none' : 'block';
+  document.getElementById('pieceCount').textContent = f.length + ' Pieces';
+  g.innerHTML = f.map(p => `
+    <div class="card" onclick="quickAdd(${p.id})">
+      <div class="card-img">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" />
+        <div class="card-overlay"></div>
+        <div class="card-cta"><div class="card-cta-inner">Add to Cart</div></div>
+        <div class="card-badge">${p.category==='boys'?'Boys':'Men'}</div>
+      </div>
+      <div class="card-info">
+        <h3>${p.name}</h3>
+        <div class="row"><span class="type">${p.type}</span><span class="price">₹${fmt(p.price)}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTypeFilter(){
+  const tf = document.getElementById('typeFilter');
+  tf.innerHTML = TYPES.map(t => {
+    const c = products.filter(p => (cat==='all'||p.category===cat) && (t==='All'||p.type===t)).length;
+    if(c===0 && t!=='All') return '';
+    return `<button class="${typeF===t?'active':''}" onclick="setType('${t}')">${t} (${c})</button>`;
+  }).join('');
+}
+
+function setCat(c){ cat=c; typeF='All'; document.querySelectorAll('.cat-filter button').forEach(b => b.classList.toggle('active', b.dataset.cat===c)); renderTypeFilter(); renderGrid(); }
+function setType(t){ typeF=t; renderTypeFilter(); renderGrid(); }
+
+function navClick(c){ closeMenu(); setCat(c); setTimeout(() => scrollToCollection(), 50); }
+function scrollToCollection(){ document.getElementById('collection').scrollIntoView({behavior:'smooth'}); }
+function scrollToAbout(){ closeMenu(); document.getElementById('about').scrollIntoView({behavior:'smooth'}); }
+
+document.getElementById('navCollection').onclick = () => navClick('all');
+document.getElementById('navMen').onclick = () => navClick('men');
+document.getElementById('navBoys').onclick = () => navClick('boys');
+document.getElementById('navAbout').onclick = () => scrollToAbout();
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const s = window.scrollY > 60;
+  const nav = document.getElementById('nav');
+  nav.classList.toggle('scrolled', s);
+  document.getElementById('logoRp').classList.toggle('scrolled', s);
+  document.getElementById('logoSub').classList.toggle('scrolled', s);
+  document.getElementById('cartBtn').classList.toggle('scrolled', s);
+  document.getElementById('menuBtn').classList.toggle('scrolled', s);
+  document.querySelectorAll('.navLink').forEach(a => a.classList.toggle('scrolled', s));
+});
+
+// Mobile menu
+function toggleMenu(){
+  const m = document.getElementById('mobileMenu');
+  const open = m.classList.toggle('open');
+  document.getElementById('menuIcon').innerHTML = open
+    ? '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>'
+    : '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>';
+}
+function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('menuIcon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>'; }
+
+// Cart
+function quickAdd(id){
+  const p = products.find(x => x.id===id);
+  const existing = cart.find(i => i.id===id);
+  if(existing) existing.qty++; else cart.push({...p, qty:1});
+  renderCart();
+  openCart();
+}
+function removeItem(id){ cart = cart.filter(i => i.id!==id); renderCart(); }
+function changeQty(id, d){
+  const i = cart.find(x => x.id===id);
+  if(!i) return;
+  i.qty += d;
+  if(i.qty <= 0) cart = cart.filter(x => x.id!==id);
+  renderCart();
+}
+function renderCart(){
+  const c = cart.reduce((s,i) => s+i.qty, 0);
+  const t = cart.reduce((s,i) => s+i.price*i.qty, 0);
+  const cc = document.getElementById('cartCount');
+  cc.style.display = c > 0 ? 'flex' : 'none';
+  cc.textContent = c;
+  document.getElementById('cartCnt').textContent = '('+c+')';
+  document.getElementById('cartTotal').textContent = '₹'+fmt(t);
+  document.getElementById('cartFoot').style.display = c > 0 ? 'block' : 'none';
+  const ci = document.getElementById('cartItems');
+  if(cart.length === 0){
+    ci.innerHTML = `<div class="cart-empty"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><p>Your cart is empty</p></div>`;
+  } else {
+    ci.innerHTML = cart.map(i => `
+      <div class="cart-item">
+        <img src="${i.image}" alt="${i.name}" />
+        <div class="info">
+          <h4>${i.name}</h4>
+          <p class="size">${i.type}</p>
+          <p class="iprice">₹${fmt(i.price)}</p>
+          <div class="qty">
+            <button onclick="changeQty(${i.id},-1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" d="M5 12h14"/></svg></button>
+            <span>${i.qty}</span>
+            <button onclick="changeQty(${i.id},1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg></button>
+            <button class="remove" onclick="removeItem(${i.id})"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+function openCart(){ document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartPanel').classList.add('open'); }
+function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartPanel').classList.remove('open'); }
+document.getElementById('checkoutBtn').onclick = () => { alert('Checkout — ₹'+fmt(cart.reduce((s,i)=>s+i.price*i.qty,0))+'\n\nThis is a demo. Connect a payment gateway to enable real checkout.'); };
+
+// Init
+renderTypeFilter();
+renderGrid();
+renderCart();
+</script>
+</body>
+</html>
